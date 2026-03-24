@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>GitHub User Search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h1>GitHub Felhasználó Keresés</h1>
+        
+        <div class="search-box">
+            <input type="text" id="user-input" placeholder="Felhasználónév...">
+            <button id="search-btn">Keresés</button>
+        </div>
+
+        <div id="user-results" class="results-container"></div>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+        document.getElementById('search-btn').addEventListener('click', searchGithubUsers);
+    </script>
+</body>
+</html>
