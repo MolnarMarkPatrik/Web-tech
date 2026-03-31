@@ -2,24 +2,60 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <title>GitHub User Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Kereső</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        #search-container {
+            margin-top: 100px;
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            width: 250px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #2ea44f;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #2c974b;
+        }
+    </style>
 </head>
 <body>
-    <main>
-        <h1>GitHub Felhasználó Keresés</h1>
+
+    <div id="search-container">
+        <h1>GitHub Felhasználó Keresése</h1>
+        <p>Írd be a keresett profil nevét (pl. microsoft, aron123):</p>
         
-        <div class="search-box">
-            <input type="text" id="user-input" placeholder="Felhasználónév...">
-            <button id="search-btn">Keresés</button>
-        </div>
+        <input type="text" id="username-input" placeholder="GitHub felhasználónév...">
+        <button onclick="goToProfile()">Keresés</button>
+    </div>
 
-        <div id="user-results" class="results-container"></div>
-    </main>
-
-    <script src="app.js"></script>
     <script>
-        document.getElementById('search-btn').addEventListener('click', searchGithubUsers);
+        function goToProfile() {
+            const username = document.getElementById('username-input').value.trim();
+            
+            if (username) {
+                window.location.href = `user.html?id=${username}`;
+            } else {
+                alert("Kérlek, írj be egy nevet!");
+            }
+        }
+
+        document.getElementById('username-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                goToProfile();
+            }
+        });
     </script>
+
 </body>
 </html>
