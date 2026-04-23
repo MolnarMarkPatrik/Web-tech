@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>GitHub Felhasználó Kereső</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; }
+        .search-box { border: 1px solid #ccc; padding: 20px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="search-box">
+        <h2>GitHub Felhasználó Keresése</h2>
+        <input type="text" id="username" placeholder="GitHub felhasználónév...">
+        <button onclick="search()">Keresés</button>
+    </div>
+
+    <script>
+        function search() {
+            const user = document.getElementById('username').value;
+            if (user) {
+                window.location.href = `user.html?id=${user}`;
+            }
+        }
+    </script>
+</body>
+</html>
