@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinamikus Teendő Lista</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        input {
+            padding: 8px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 8px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        li:hover {
+            background-color: #f9f9f9;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Teendőim</h2>
+    <input type="text" id="todoInput" placeholder="Új teendő...">
+    <button id="addBtn">Hozzáadás</button>
+
+    <ul id="todoList">
+        </ul>
+</div>
+
+<script>
+    const inputMezo = document.getElementById('todoInput');
+    const hozzaadasGomb = document.getElementById('addBtn');
+    const lista = document.getElementById('todoList');
+
+    function addElement() {
+        const szoveg = inputMezo.value.trim(); 
+
+        if (szoveg !== "") {
+            const ujLi = document.createElement('li');
+            ujLi.textContent = szoveg;
+
+            ujLi.addEventListener('click', function() {
+                this.classList.toggle('completed');
+            });
+
+            lista.appendChild(ujLi);
+
+            inputMezo.value = "";
+            inputMezo.focus();
+        } else {
+            alert("Kérlek, írj be egy feladatot!");
+        }
+    }
+
+    hozzaadasGomb.addEventListener('click', addElement);
+
+    inputMezo.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            addElement();
+        }
+    });
+</script>
+
+</body>
+</html>
