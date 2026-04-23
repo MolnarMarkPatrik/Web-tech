@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Számkitaláló Játék</title>
+</head>
+<body>
+    <script>        
+        const celSzam = Math.floor(Math.random() * 1000001);
+        const maxProba = 20;
+        let tippekSzama = 0;
+        let talalt = false;
+
+        alert("Gondoltam egy számra 0 és 1 000 000 között. 20 lehetőséged van kitalálni!");
+
+        while (tippekSzama < maxProba && !talalt) {
+            tippekSzama++;
+            
+            let bemenet = prompt(`${tippekSzama}. tipp: Mi a tipped?`);
+            let tipp = parseInt(bemenet);
+
+            if (isNaN(tipp)) {
+                alert("Kérlek, érvényes számot adj meg!");
+                tippekSzama--;
+                continue;
+            }
+
+            if (tipp === celSzam) {
+                alert(`Gratulálok, ${tippekSzama} lépésből eltaláltad!`);
+                talalt = true;
+            } else if (tipp > celSzam) {
+                alert(`${tippekSzama}. tipp nem talált: A megoldás kisebb.`);
+            } else {
+                alert(`${tippekSzama}. tipp nem talált: A megoldás nagyobb.`);
+            }
+        }
+
+        if (!talalt) {
+            alert(`Sajnos ez most nem sikerült! A megoldás: ${celSzam}`);
+        }
+    </script>
+</body>
+</html>
